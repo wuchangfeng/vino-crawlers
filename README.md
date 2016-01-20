@@ -3,6 +3,7 @@
     0：py3.0作者博客 http://lovenight.github.io   Thank you
     1：最近做App需要图片资源，就想写个爬虫爬，想起来以前收藏的py3.0版本，改成2.7版本
     2：改动之后：下载图片的数量可以'自己控制'，下载之后的图片可'根据尺寸保留'
+    ![](https://cloud.githubusercontent.com/assets/13432620/12437414/b021ad5e-bf58-11e5-8403-7f88f93eba4f.jpg)
 # spider--zhihu
 #####一：firstLogin模拟登录知乎--代码解读思路整理。
     0：很多网站需要登录才能访问更多的内容，so登录必不可少，这部分代码也是我fork的源码的author.py（在第二部分可见，尊重作者，感谢：）
