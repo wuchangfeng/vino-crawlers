@@ -1,7 +1,7 @@
 # Explain：
 ####谢谢关注，最近一直在学Android，比较忙。这个Project我会一直更新，寒假回回家继续学习。自己学到的知识都会在这里写上。
 # spider--notelink
-    0:Python基础http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
+    0:[Python基础](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)
     1:爬虫初步http://cuiqingcai.com/1052.html
     2:爬虫初步http://zhuanlan.zhihu.com/xlz-d
 # spider--douban
@@ -10,7 +10,7 @@
 #####一：py2.7 根据关键字从百度下载图片，并且能够根据需要过滤图片
     0：py3.0作者博客 http://lovenight.github.io   Thank you
     1：最近做App需要图片资源，就想写个爬虫爬，想起来以前收藏的py3.0版本，改成2.7版本
-    2：改动之后：下载图片的数量可以'自己控制'，下载之后的图片可'根据尺寸保留'
+    2：改动之后：下载图片的数量可以**自己控制**，下载之后的图片可'根据尺寸保留'
 # spider--zhihu
 #####一：firstLogin模拟登录知乎--代码解读思路整理。
     0：很多网站需要登录才能访问更多的内容，so登录必不可少，这部分代码也是我fork的源码的author.py（在第二部分可见，尊重作者，感谢：）
