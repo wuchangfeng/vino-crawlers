@@ -8,7 +8,7 @@
 * [爬虫初步二](http://zhuanlan.zhihu.com/xlz-d)
   
 # 豆瓣爬虫
-* [豆瓣爬虫裸写版](：http://www.thinksaas.cn/group/topic/353600/)
+* [豆瓣爬虫裸写版](http://www.thinksaas.cn/group/topic/353600/)
 
 # 百度爬虫
 ####一：py2.7 根据关键字从百度下载图片，并且能够根据需要过滤图片。
