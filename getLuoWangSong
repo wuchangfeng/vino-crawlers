@@ -16,9 +16,6 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-
-
-
 def get_song_list(volumn):
 
     # **** http://www.luoo.net/music/801
@@ -31,16 +28,14 @@ def get_song_list(volumn):
     print u"本期歌单{}:".format(volumn)
 
     result = []
-
+    # 获取歌曲目录列表
     for song in songs:
 
         meta = {}
 
         meta['name'] = song.find('p', 'name').getText()
 
-        meta['artist'] = song.find('p', 'artist').getText()[7:]
-
-        print '{} by {}'.format(meta['name'], meta['artist'])
+        print '{}'.format(meta['name'])
 
         result.append(meta)
 
@@ -71,13 +66,10 @@ def download_songs(volumn):
         # http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio801/01.mp3
         #  volumn就是801页面，01就是歌曲标识
 
-
-
         r = requests.get(MP3_URL.format(volumn,track), stream=True)
 
         song_name = SONG_NAME.format(song['name'], song['artist'])
-
-
+        # Requests 获取头部响应流
         with open(song_name, 'wb') as fd:
 
             for chunk in r.iter_content():
@@ -87,8 +79,10 @@ def download_songs(volumn):
             fd.close()
 
         print u"{}下载成功".format(song['name'])
+        # 睡一下
         time.sleep(5);
-        print u"开始下载下一首,请耐心等"
+        
+        print u"开始下载下一首,干点别的去吧"
 
 if __name__ == '__main__':
 
