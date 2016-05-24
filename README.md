@@ -16,14 +16,11 @@
 
 ## 爬虫基础
 
+* [Scrapy 爬爬取豆瓣信息并用 MongoDB 存储](http://1992mrwang.blog.51cto.com/3265935/1583539)
 * [Scrapy 爬取知乎用户数据并用 MySQL 存储](http://python.jobbole.com/85125/)
-
 * [Python 爬虫技巧总结,Cookies处理,get(),post(),以及如何伪装成浏览器等](http://www.codeceo.com/article/python-spider-skills.html#0-tsina-1-54529-397232819ff9a47a7b7e80a40613cfe1)
-* [Python爬虫学习系列教程,非常好，我入门就是看他的教程的,具体内容看下图](http://cuiqingcai.com/1052.html)
+* [Python爬虫学习系列教程,非常好，我入门就是看他的教程的](http://cuiqingcai.com/1052.html)
 * [Python 工程师,很全面的 Python 技术,在知乎有专栏](http://zhuanlan.zhihu.com/xlz-d)
-
-![](http://7xrl8j.com1.z0.glb.clouddn.com/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8.png)
-
 ## 爬虫进阶
 * **Requests 库**
 * **BeautifulSoup 库**
