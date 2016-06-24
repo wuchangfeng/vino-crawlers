@@ -24,8 +24,8 @@
 
 ## 爬虫进阶 
 
-* **Requests 库**
-* **BeautifulSoup 库**
+* [**Requests 库**](http://cn.python-requests.org/zh_CN/latest/user/quickstart.html)
+* [**BeautifulSoup 库**](http://beautifulsoup.readthedocs.io/zh_CN/latest/)
 * [Scrapy入门文档](http://scrapy-chs.readthedocs.org/zh_CN/0.24/intro/tutorial.html)
 * [Scrapy初级实战](http://www.ituring.com.cn/article/114408)
 * [Scrapy初级实战之数据可视化](http://aljun.me/post/9)
