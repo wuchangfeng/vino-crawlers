@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 LUOO_URL = "http://www.luoo.net/music/{}"
 MP3_URL = "http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio{}/{}.mp3"
 SONG_NAME = "{} -{}.mp3"
-basePath = r'./luowang'
+basePath = os.path.join(os.getcwd(), r'luowang')
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -81,7 +81,7 @@ def download_songs(volumn):
 
         print u"{}下载成功".format(song['name'])
         # 睡一下
-        time.sleep(5);
+        time.sleep(1);
 
         print u"开始下载下一首,干点别的去吧"
 
