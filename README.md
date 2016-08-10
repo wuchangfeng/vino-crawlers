@@ -35,3 +35,7 @@
 
 * [用 pygal 来绘制SVG 显示数据](http://pygal.org/en/stable/documentation/types/line.html#time)
 
+## Python 相关
+
+* [Python2 中编码的问题](https://zhuanlan.zhihu.com/p/20612337?refer=xlz-d)
+
