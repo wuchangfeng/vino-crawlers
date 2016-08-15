@@ -30,8 +30,13 @@
 * [Scrapy 初级实战](http://www.ituring.com.cn/article/114408)
 * [Scrapy 初级实战之数据可视化](http://aljun.me/post/9)
 * [Python 抓取微信公众号文章](http://mp.weixin.qq.com/s?__biz=MzI0NjIxMzE5OQ==&mid=2656697797&idx=1&sn=a8e93bbc960c7564c2054a24e2414145#rd)
+* [Python 模拟登陆知乎(8/7日更)](http://blog.csdn.net/think_ycx/article/details/52104529)
 
 ## 数据分析
 
 * [用 pygal 来绘制SVG 显示数据](http://pygal.org/en/stable/documentation/types/line.html#time)
+
+## Python 相关
+
+* [Python2 中编码的问题](https://zhuanlan.zhihu.com/p/20612337?refer=xlz-d)
 
