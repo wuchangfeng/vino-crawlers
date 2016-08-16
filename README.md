@@ -35,6 +35,7 @@
 ## 数据分析
 
 * [用 pygal 来绘制SVG 显示数据](http://pygal.org/en/stable/documentation/types/line.html#time)
+* [百度的良心之作 ECharts](http://echarts.baidu.com/demo.html#pie-roseType)
 
 ## Python 相关
 
