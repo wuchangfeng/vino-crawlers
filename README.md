@@ -33,6 +33,7 @@
 * [Scrapy 初级实战之数据可视化](http://aljun.me/post/9)
 * [Python 抓取微信公众号文章](http://mp.weixin.qq.com/s?__biz=MzI0NjIxMzE5OQ==&mid=2656697797&idx=1&sn=a8e93bbc960c7564c2054a24e2414145#rd)
 * [Python 模拟登陆知乎(8/7日更)](http://blog.csdn.net/think_ycx/article/details/52104529)
+* Python 爬取知乎专栏文章推送至 Kindle
 
 ## 数据分析
 
