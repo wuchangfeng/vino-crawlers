@@ -12,6 +12,8 @@
 * Readme_One:关于如何爬取 One 网站上的每日一图以及 One 问答,并且存储在 LeanCloud 云后台。
 * Readme_Sujin:关于如何爬取素锦网站上的好文章,并且存储在 LeanCloud 云后台。
 * Readme_Douban:关于如何爬取豆瓣图书 Top250。
+* Readme_Lagou:关于如何从拉勾网爬取较大量的职位信息以及存储至 NoSql 类型数据库中。
+* Readme_XiciDaili:抄自知乎一个回答。改成 MongoDB 存储以及加了验证机制。但是可用性不是很高，大概30%。
 
 
 ## 爬虫基础
