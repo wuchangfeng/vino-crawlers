@@ -109,10 +109,10 @@ def download_songs(volumn):
             # http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio801/01.mp3
             #  volumn就是801页面，01就是歌曲标识
             try:
-                r = requests.get(MP3_URL.format(volumn,track), stream=False)
+                r = requests.get(MP3_URL.format(volumn,track), stream=True)
                 if r.status_code != 200:
                     track = str(index)
-                    r = requests.get(MP3_URL.format(volumn,track), stream=False)
+                    r = requests.get(MP3_URL.format(volumn,track), stream=True)
                     
                 # Requests 获取头部响应流
                 with open(song_name, 'wb') as fd:
