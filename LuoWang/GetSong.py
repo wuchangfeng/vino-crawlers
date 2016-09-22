@@ -60,8 +60,13 @@ def get_song_list(volumn):
 
     bs = BeautifulSoup(r.content, 'html.parser')
     name_number = bs.find("span","vol-number rounded").getText()
-    name_title  = bs.find("span","vol-title").getText()
-    name_sharp  = bs.find("a","vol-tag-item").getText()
+    name_title  = u""
+    name_sharp  = u""
+    try:
+        name_title  = bs.find("span","vol-title").getText()
+        name_sharp  = bs.find("a","vol-tag-item").getText()
+    except:
+        pass
     if DOWNLOAD_MODE == 1:
         repair_page(r.content, name_number,name_number + u" " + name_title + u" " + name_sharp)
     else:
