@@ -21,6 +21,7 @@ sys.setdefaultencoding('utf-8')
 DOWNLOAD_MODE = 0 # 0:输入模式 1:旧版本修复模式 2:更新模式 3:精准模式(只下载指定专辑的指定歌曲)
 song_shoot    = 0 #精准模式使用，指定(某个专辑的)歌曲
 def save_page(page,dir_name):
+    dir_name = re.sub(r'[|\\?*<\":>+\[\]\/\']', u'_', dir_name)
     #创建存储目录
     filename = os.path.join(basePath,dir_name)
 
@@ -34,6 +35,7 @@ def save_page(page,dir_name):
     infofile.close()
 
 def repair_page(page,old_name,dir_name):
+    dir_name = re.sub(r'[|\\?*<\":>+\[\]\/\']', u'_', dir_name)
     #将旧目录名改为新的
     oldfilename = os.path.join(basePath,old_name)
     newfilename = os.path.join(basePath,dir_name)
@@ -121,7 +123,7 @@ def download_songs(volumn):
                     fd.close()
             except:
                 print u"刊号: " + volumn + u" " + str(index) + u"/" + str(len(songs)) + u" 下载失败 "
-                with open(os.path.isfile(str(index) + u"_error.txt"), 'w') as fe:
+                with open(str(index) + u"_error.txt", 'w') as fe:
                     fe.write(u"")
                 fe.close()
         try:
@@ -158,10 +160,11 @@ def download_songs(volumn):
 
 def main(argv):
     #参数处理
-    opts, args = getopt.getopt(argv, "hrf:t:s:e:u")
+    opts, args = getopt.getopt(argv, "hrf:t:s:e:uy")
     page_from  = 0
     page_to    = 0
     page_shoot = 0
+    default_yes = False#更新模式使用，不需要确认更新
     global song_shoot
     global DOWNLOAD_MODE 
 
@@ -189,6 +192,8 @@ def main(argv):
             DOWNLOAD_MODE = 1
         elif op == "-u":
             DOWNLOAD_MODE = 2
+        elif op == "-y":
+            default_yes = True
         elif op == "-s":
             DOWNLOAD_MODE = 3
             try:
@@ -265,7 +270,11 @@ def main(argv):
                 print u"本地目录混乱，请清理后重试"
             else:
                 print u"准备下载刊号: " + str(page_from) + u" 到 " + str(page_to) +u"确认更新吗？(y/n)"
-                vol = raw_input()
+                if default_yes == False:
+                    vol = raw_input()
+                else:
+                    vol = u'y'
+
                 if vol != u'y' and vol != u'Y':
                     print u"更新取消"
                     sys.exit()
