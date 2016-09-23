@@ -45,3 +45,7 @@
 
 * [Python2 中编码的问题](https://zhuanlan.zhihu.com/p/20612337?refer=xlz-d)
 
+## 感谢
+
+*  [suzumiyang](https://github.com/suzumiyang) 参与落网爬虫的改进
+
