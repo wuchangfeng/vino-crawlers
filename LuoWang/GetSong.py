@@ -27,39 +27,39 @@ def get_mp3url(index):
     elif index == 497:
         return baseurl + u"/luoo/s1/{}.mp3"
     elif index >= 498 and index <= 521:
-        return baseurl + u"/low/luoo/S" + str(index - 496) + u"/{}.mp3"
+        return baseurl + u"/luoo/S" + str(index - 496) + u"/{}.mp3"
     elif index == 522:
-        return baseurl + u"/low/luoo/s26/{}.mp3"
+        return baseurl + u"/luoo/s26/{}.mp3"
     elif index >= 523 and index <= 539:
-        return baseurl + u"/low/anbai/radio" + str(index - 522) + u"/{}.mp3" 
+        return baseurl + u"/anbai/radio" + str(index - 522) + u"/{}.mp3" 
     elif index >= 540 and index <= 543: 
-        return baseurl + u"/low/china/radio" + str(index - 539) + u"/{}.mp3"
+        return baseurl + u"/china/radio" + str(index - 539) + u"/{}.mp3"
     elif index == 545:
-        return baseurl + u"/low/china/radio5/{}.mp3"
+        return baseurl + u"/china/radio5/{}.mp3"
     elif index >= 546 and index <= 557: 
-        return baseurl + u"/low/world/radio" + str(index - 545) + u"/{}.mp3"
+        return baseurl + u"/world/radio" + str(index - 545) + u"/{}.mp3"
     elif index == 558 or index == 559:
-        return baseurl + u"/low/electric/radio" + str(index - 557) + u"/{}.mp3"
+        return baseurl + u"/electric/radio" + str(index - 557) + u"/{}.mp3"
     elif index == 560 or index == 561:
-        return baseurl + u"/low/classical/radio" + str(index - 559) + u"/{}.mp3"
+        return baseurl + u"/classical/radio" + str(index - 559) + u"/{}.mp3"
     elif index >= 562 and index <= 565: 
-        return baseurl + u"/low/jazz/radio" + str(index - 561) + u"/{}.mp3"
+        return baseurl + u"/jazz/radio" + str(index - 561) + u"/{}.mp3"
     elif index == 569:
-        return baseurl + u"/low/electric/radio3/{}.mp3"
+        return baseurl + u"/electric/radio3/{}.mp3"
     elif index == 573:
-        return baseurl + u"/low/luoo/radio499/{}.mp3"
+        return baseurl + u"/luoo/radio499/{}.mp3"
     elif index == 576:
-        return baseurl + u"/low/jazz/radio5/{}.mp3"
+        return baseurl + u"/jazz/radio5/{}.mp3"
     elif index == 581:
-        return baseurl + u"/low/luoo/radio500/{}.mp3"
+        return baseurl + u"/luoo/radio500/{}.mp3"
     elif index == 582:
-        return baseurl + u"/low/luoo/radio581/{}.mp3"
+        return baseurl + u"/luoo/radio581/{}.mp3"
     elif index == 583:
-        return baseurl + u"/low/anbai/radio18/{}.mp3"
+        return baseurl + u"/anbai/radio18/{}.mp3"
     elif index == 594:
-        return baseurl + u"/low/anbai/radio19/{}.mp3"
+        return baseurl + u"/anbai/radio19/{}.mp3"
     else:
-        return baseurl + u"/low/luoo/radio"+str(index)+"/{}.mp3"
+        return baseurl + u"/luoo/radio"+str(index)+"/{}.mp3"
     
 def save_page(page,dir_name):
     dir_name = re.sub(r'[|\\?*<\":>+\[\]\/\']', u'_', dir_name)
@@ -162,15 +162,16 @@ def download_songs(volumn):
             #  volumn就是801页面，01就是歌曲标识
             try:
                 mp3url = get_mp3url(int(volumn))
-                r = requests.get(mp3url.format(track), stream=True)
+                r = requests.get(mp3url.format(track), stream=False)
                 if r.status_code != 200:
                     track = str(index)
-                    rs = requests.get(mp3url.format(track), stream=True)
+                    rs = requests.get(mp3url.format(track), stream=False)
                     if rs.status_code != 200:
                         print u"刊号: " + volumn + u" " + str(index) + u"/" + str(len(songs)) + u" 下载失败 "
                         with open(str(index) + u"_error.txt", 'w') as fe:
                             fe.write(u"")
                         fe.close()
+                        return
                     
                 # Requests 获取头部响应流
                 with open(song_name, 'wb') as fd:
