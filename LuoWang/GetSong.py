@@ -12,7 +12,6 @@ import re
 from bs4 import BeautifulSoup
 
 LUOO_URL = "http://www.luoo.net/music/{}"
-MP3_URL = "http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio{}/{}.mp3"
 SONG_NAME = "{}.mp3"
 SONG_NAME_OLD = "{} -{}.mp3"
 basePath = os.path.join(os.getcwd(), r'luowang')
@@ -20,6 +19,48 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 DOWNLOAD_MODE = 0 # 0:输入模式 1:旧版本修复模式 2:更新模式 3:精准模式(只下载指定专辑的指定歌曲)
 song_shoot    = 0 #精准模式使用，指定(某个专辑的)歌曲
+
+def get_mp3url(index):
+    baseurl = u"http://luoo-mp3.kssws.ks-cdn.com/low"
+    if index == 544 or index == 566 or index == 567 or index == 568:#这四个页面并不存在
+        return u""
+    elif index == 497:
+        return baseurl + u"/luoo/s1/{}.mp3"
+    elif index >= 498 and index <= 521:
+        return baseurl + u"/luoo/S" + str(index - 496) + u"/{}.mp3"
+    elif index == 522:
+        return baseurl + u"/luoo/s26/{}.mp3"
+    elif index >= 523 and index <= 539:
+        return baseurl + u"/anbai/radio" + str(index - 522) + u"/{}.mp3" 
+    elif index >= 540 and index <= 543: 
+        return baseurl + u"/china/radio" + str(index - 539) + u"/{}.mp3"
+    elif index == 545:
+        return baseurl + u"/china/radio5/{}.mp3"
+    elif index >= 546 and index <= 557: 
+        return baseurl + u"/world/radio" + str(index - 545) + u"/{}.mp3"
+    elif index == 558 or index == 559:
+        return baseurl + u"/electric/radio" + str(index - 557) + u"/{}.mp3"
+    elif index == 560 or index == 561:
+        return baseurl + u"/classical/radio" + str(index - 559) + u"/{}.mp3"
+    elif index >= 562 and index <= 565: 
+        return baseurl + u"/jazz/radio" + str(index - 561) + u"/{}.mp3"
+    elif index == 569:
+        return baseurl + u"/electric/radio3/{}.mp3"
+    elif index == 573:
+        return baseurl + u"/luoo/radio499/{}.mp3"
+    elif index == 576:
+        return baseurl + u"/jazz/radio5/{}.mp3"
+    elif index == 581:
+        return baseurl + u"/luoo/radio500/{}.mp3"
+    elif index == 582:
+        return baseurl + u"/luoo/radio581/{}.mp3"
+    elif index == 583:
+        return baseurl + u"/anbai/radio18/{}.mp3"
+    elif index == 594:
+        return baseurl + u"/anbai/radio19/{}.mp3"
+    else:
+        return baseurl + u"/luoo/radio"+str(index)+"/{}.mp3"
+    
 def save_page(page,dir_name):
     dir_name = re.sub(r'[|\\?*<\":>+\[\]\/\']', u'_', dir_name)
     #创建存储目录
@@ -59,7 +100,11 @@ def get_song_list(volumn):
     r = requests.get(LUOO_URL.format(volumn))
 
     bs = BeautifulSoup(r.content, 'html.parser')
-    name_number = bs.find("span","vol-number rounded").getText()
+    try:
+        name_number = bs.find("span","vol-number rounded").getText()
+    except:
+        print u"刊号: " + volumn + u" 不存在"
+        return []#没有页面，直接返回(544,566,567,568)
     name_title  = u""
     name_sharp  = u""
     try:
@@ -116,10 +161,17 @@ def download_songs(volumn):
             # http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio801/01.mp3
             #  volumn就是801页面，01就是歌曲标识
             try:
-                r = requests.get(MP3_URL.format(volumn,track), stream=True)
+                mp3url = get_mp3url(int(volumn))
+                r = requests.get(mp3url.format(track), stream=False)
                 if r.status_code != 200:
                     track = str(index)
-                    r = requests.get(MP3_URL.format(volumn,track), stream=True)
+                    rs = requests.get(mp3url.format(track), stream=False)
+                    if rs.status_code != 200:
+                        print u"刊号: " + volumn + u" " + str(index) + u"/" + str(len(songs)) + u" 下载失败 "
+                        with open(str(index) + u"_error.txt", 'w') as fe:
+                            fe.write(u"")
+                        fe.close()
+                        return
                     
                 # Requests 获取头部响应流
                 with open(song_name, 'wb') as fd:
