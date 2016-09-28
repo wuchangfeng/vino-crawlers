@@ -45,6 +45,15 @@
 
 * [Python2 中编码的问题](https://zhuanlan.zhihu.com/p/20612337?refer=xlz-d)
 
+## 书籍推荐
+
+* 《用 Python 进行数据分析》
+* 《Python 数据挖掘入门与实战》
+* 《干净的数据-数据清洗与入门实践》
+* 《Python 网络数据采集》
+* 《集体智慧编程》
+* 《数据挖掘导论》
+
 ## 感谢
 
 *  [suzumiyang](https://github.com/suzumiyang) 参与落网爬虫的改进
