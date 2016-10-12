@@ -125,6 +125,7 @@ def get_song_list(volumn):
     for song in songs:
         meta = {}
         meta['name']        = song.find('p', 'name').getText()
+        meta['name']        = re.sub(r'[|\\?*<\":>+\[\]\/\']', u'_', meta['name'])
         meta['artist']      = re.sub(ur'Artist: ', u"", song.find('p', 'artist').getText()) #去掉 artist 中 Artist: 
         meta['oldartist']   = song.find('p', 'artist').getText()                            #修复模式使用
         meta['album']       = re.sub(ur'Album: ', u"", song.find('p', 'album').getText())   #去掉 album  中 Album: 
@@ -145,7 +146,10 @@ def download_songs(volumn):
     song_name = ""
     for song in songs:
         index += 1
-        track = '%02d' % index
+        if DOWNLOAD_MODE == 3:
+            track = '%02d' % song_shoot
+        else:
+            track = '%02d' % index
         song_name = SONG_NAME.format(song['name'])
 
         if DOWNLOAD_MODE == 1:#修复模式
@@ -162,10 +166,13 @@ def download_songs(volumn):
             #  volumn就是801页面，01就是歌曲标识
             try:
                 mp3url = get_mp3url(int(volumn))
-                r = requests.get(mp3url.format(track), stream=False)
+                r = requests.get(mp3url.format(track), stream=True)
                 if r.status_code != 200:
-                    track = str(index)
-                    rs = requests.get(mp3url.format(track), stream=False)
+                    if DOWNLOAD_MODE == 3:
+                        track = str(song_shoot)
+                    else:
+                        track = str(index)
+                    rs = requests.get(mp3url.format(track), stream=True)
                     if rs.status_code != 200:
                         print u"刊号: " + volumn + u" " + str(index) + u"/" + str(len(songs)) + u" 下载失败 "
                         with open(str(index) + u"_error.txt", 'w') as fe:
